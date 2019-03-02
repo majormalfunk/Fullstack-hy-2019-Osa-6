@@ -9,14 +9,13 @@ const App = (props) => {
   return (
     <div>
       <h2>Anecdotes</h2>
-      <Notification store={props.store} />
-      <AnecdoteForm store={props.store} />
-      <Filter store={props.store} />
-      <AnecdoteList store={props.store} />
+      <Notification />
+      <AnecdoteForm />
+      <Filter />
+      <AnecdoteList />
     </div>
   )
 
 }
-
 
 export default App
