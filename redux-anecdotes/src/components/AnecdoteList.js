@@ -2,11 +2,17 @@ import React from 'react';
 import { vote } from '../reducers/anecdoteReducer'
 
 const AnecdoteList = ({ store }) => {
+  const { anecdotes, filter } = store.getState()
+  const anecdotesToShow = () => {
+    return (
+      anecdotes.filter(anecdote => anecdote.content.includes(filter))
+    )
+  }
   return (
     <div>
       <h3>Available anecdotes</h3>
       <ul>
-      {store.getState().anecdotes.map(anecdote =>
+      {anecdotesToShow().map(anecdote =>
         <li key={anecdote.id}><div>
           <div>
             {anecdote.content}
