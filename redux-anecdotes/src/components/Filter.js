@@ -13,7 +13,7 @@ const Filter = (props) => {
   return (
     <div style={style}>
       <h3>Filter anecdotes:</h3>
-      <input onChange={handleChange} />
+      <input onChange={handleChange} size="50" />
     </div>
   )
 }

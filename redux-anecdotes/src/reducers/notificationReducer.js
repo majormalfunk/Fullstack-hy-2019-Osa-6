@@ -1,11 +1,20 @@
 const notificationAtStart = ''
 
-export const newNotification = (content) => {
-  return {
-    type: 'NEW_NOTIFICATION',
-    data: { content: content }
+export const setNotification = (content, timeout) => {
+
+  return async dispatch => {
+    dispatch({
+      type: 'SET_NOTIFICATION',
+      data: { content: content }
+    })
+    await setTimeout(() => {
+      dispatch({
+        type: 'CLEAR_NOTIFICATION'
+      })
+    }, (timeout * 1000))
   }
 }
+
 export const clearNotification = () => {
   return {
     type: 'CLEAR_NOTIFICATION'
@@ -14,7 +23,7 @@ export const clearNotification = () => {
 
 const reducerNotifs = (state = notificationAtStart, action) => {
   switch (action.type) {
-    case 'NEW_NOTIFICATION':
+    case 'SET_NOTIFICATION':
       return action.data.content
     case 'CLEAR_NOTIFICATION':
       return ''
